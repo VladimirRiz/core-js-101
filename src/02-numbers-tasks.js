@@ -110,10 +110,9 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
-// const c = (x1 * x2 + y1 * y2) / ((Math.sqrt(x1 ** 2 + y1 ** 2) * Math.sqrt(x2 ** 2 + y2 ** 2)));
-  // return Math.acos(c);
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  // angle = atan2(vector2.y, vector2.x) - atan2(vector1.y, vector1.x);
+  return Math.abs(Math.atan2(y2, x2) - Math.atan2(y1, x1));
 }
 
 /**
@@ -211,9 +210,20 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n === 1) {
+    return false;
+  } if (n === 2) {
+    return true;
+  }
+  for (let count = 2; count < n; count += 1) {
+    if (n % count === 0) {
+      return false;
+    }
+  }
+  return true;
 }
+
 
 /**
  * Tries to convert value to number and returns it if conversion was successfull;
@@ -230,8 +240,8 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  return Number.isNaN(Number(value)) ? def : Number(value);
 }
 
 module.exports = {
